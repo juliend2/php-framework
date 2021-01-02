@@ -19,3 +19,14 @@ function html_foot() {
 </html>
 ";
 }
+
+function html_form($action, $method, $callback) {
+  $callback_args = [];
+  $callback_args['action'] = $action;
+  $callback_args['method'] = $method;
+  ?><form action="<?php echo $action ?>" method="<?php echo $method ?>">
+<?php
+$callback($callback_args);
+?>
+</form><?php
+}
