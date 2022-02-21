@@ -1,8 +1,20 @@
 <?php
 
+
+
+function get_base() {
+  return getenv("BASE") ? getenv("BASE") : '';
+}
+
+function base() {
+  echo get_base();
+}
+
 // ugly bunch of html helpers
 
-function html_head($title) {
+function html_head($title, $opts = []) {
+  $stylesheet = isset($opts['css']) ? "<link rel='stylesheet' href='${opts['css']}'>" : '';
+
   echo "
 <!DOCTYPE html>
 <html>
@@ -10,6 +22,7 @@ function html_head($title) {
   <title>$title</title>
   <meta charset='utf-8'/>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
+  $stylesheet
 </head>
 ";
 }
